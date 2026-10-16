@@ -104,6 +104,13 @@ label: `0.1.0-alpha.0` uses `alpha`, `0.2.0-dev.1` uses `dev`, and
 are rejected, as are mismatched version tags. Failed verification or audits
 stop publication. Do not move published version tags or reuse npm versions.
 
+On the initial bootstrap, npm assigned both `alpha` and `latest` to
+`0.1.0-alpha.0` despite the explicit alpha publication tag. The registry rejects
+removing `latest` with HTTP 400, matching the
+[reported npm behavior](https://github.com/npm/cli/issues/8490). The version is
+still an experimental alpha; use the explicit version or `@alpha`. Subsequent
+prerelease workflow publishes select only their named channel.
+
 The workflow can be rerun for a transient failure before a version is published.
 After publication, fix the problem in a new version. GitHub environment approval
 and npm package-owner setup are external requirements; a valid YAML workflow
