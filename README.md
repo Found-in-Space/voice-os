@@ -62,7 +62,7 @@ the npm artifact contains compiled ESM and declarations with explicit exports.
 CI additionally runs dependency audits on Node.js 22 and 24. See
 [testing and host acceptance](docs/testing.md) for the checks and their limits.
 
-This is an experimental `0.1.0-alpha.0` package. Pas de Géant's walking and eclipse
+This is an experimental `0.1.0-alpha.1` package. Pas de Géant's walking and eclipse
 experiences consume a generated npm archive in that repository's `vendor/npm`.
 This keeps a standalone Geant checkout buildable while the alpha is developed.
 Run `npm run voice:refresh` in Geant to rebuild and install the sibling VoiceOS

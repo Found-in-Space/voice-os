@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-alpha.1 — 2026-10-16
+
+- Release through the version-tag GitHub Actions workflow with npm trusted
+  publishing and provenance. The initial alpha used an owner-authorized
+  bootstrap upload.
+- Document npm setup, registry processing and the initial `latest` label behavior.
+
+The runtime API is unchanged from `0.1.0-alpha.0`. Live microphone, playback and
+Quest acceptance remain outstanding; this release remains experimental.
+
 ## 0.1.0-alpha.0 — 2026-10-16
 
 Initial extraction from Pas de Géant into an independently reusable package:

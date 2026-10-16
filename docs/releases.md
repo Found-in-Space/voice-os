@@ -2,7 +2,8 @@
 
 VoiceOS follows TouchOS's tag-based release convention. The source repository
 is `Found-in-Space/voice-os`; the public npm package is
-`@found-in-space/voice-os`. The initial alpha version is `0.1.0-alpha.0`.
+`@found-in-space/voice-os`. The current package version is `0.1.0-alpha.1`;
+`0.1.0-alpha.0` was the owner-authorized bootstrap release.
 
 ## Automation
 
