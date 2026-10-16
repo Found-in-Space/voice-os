@@ -63,10 +63,11 @@ CI additionally runs dependency audits on Node.js 22 and 24. See
 [testing and host acceptance](docs/testing.md) for the checks and their limits.
 
 This is an experimental `0.1.0-alpha.1` package. Pas de Géant's walking and eclipse
-experiences consume a generated npm archive in that repository's `vendor/npm`.
-This keeps a standalone Geant checkout buildable while the alpha is developed.
-Run `npm run voice:refresh` in Geant to rebuild and install the sibling VoiceOS
-source. Registry consumers should pin the exact package version.
+experiences pin this published version in their app manifest and npm lockfile.
+A standalone Geant checkout needs no sibling VoiceOS repository or local voice
+archive. Registry consumers should pin the exact package version and verify
+their host integration when upgrading. Physical browser and Quest audio
+acceptance remains outstanding for the initial alpha.
 
 ## Documentation and contributions
 

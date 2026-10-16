@@ -34,9 +34,9 @@ from the tagged commit rather than relying on a different branch's CI result.
 
 ## Manual host acceptance
 
-Before the first npm release, run the examples and both Geant voice consumers
-in a real browser and Quest where supported. Record the browser/device,
-package version and results:
+Before accepting a release on a supported host, run the examples and both
+Geant voice consumers in a real browser and Quest where supported. Record the
+browser/device, package version and results:
 
 1. Explicit enablement requests the microphone and speaks the configured greeting.
 2. A normal query and a tool command report actual application state/results.

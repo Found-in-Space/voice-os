@@ -24,7 +24,10 @@ npm pack
 
 Install the `.tgz` in a consumer with `npm install /path/to/package.tgz`. Use a
 copied archive and lockfile when the consumer must build independently of the
-producer checkout. Geant's `npm run voice:refresh` automates this flow.
+producer checkout. Pas de Géant's walking and eclipse consumers use the exact
+published `0.1.0-alpha.1` version rather than a local archive. After validating
+a local package change, publish a new version through the release workflow and
+update consumers to that exact registry version.
 
 ## Share tool declarations
 
