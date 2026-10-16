@@ -19,9 +19,10 @@ npm run verify:release
 
 Tests use fake transports, media, peer connections, audio and HTTP responses.
 They do not call a paid provider, request a real microphone or start a browser.
-The package consumer installs from the local npm cache; `npm ci` must first
-populate dependencies. Network access is needed for the initial install and
-these separate advisory checks, also run by CI and the publication workflow:
+The packed-package consumer performs a normal npm install, so it works on a
+fresh runner without pre-existing registry metadata. Network access is needed
+for dependency installation, packed-consumer verification and these separate
+advisory checks, also run by CI and the publication workflow:
 
 ```sh
 npm audit --audit-level=high

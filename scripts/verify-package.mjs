@@ -15,7 +15,7 @@ const archive = join(consumer, packed.filename);
 await writeFile(join(consumer, 'package.json'), JSON.stringify({ private: true, type: 'module', dependencies: {
   '@found-in-space/voice-os': `file:${archive}`, '@found-in-space/touch-os': '0.3.0', '@types/node': '22.18.6',
 } }));
-execFileSync('npm', ['install', '--offline', '--ignore-scripts', '--no-audit', '--fund=false'], { cwd: consumer, stdio: 'pipe' });
+execFileSync('npm', ['install', '--ignore-scripts', '--no-audit', '--fund=false'], { cwd: consumer, stdio: 'inherit' });
 if ((await lstat(join(consumer, 'node_modules/@found-in-space/voice-os'))).isSymbolicLink()) throw new Error('External consumer must use packed contents.');
 await writeFile(join(consumer, 'verify.mjs'), `
 import assert from 'node:assert/strict';

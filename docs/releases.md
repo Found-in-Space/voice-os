@@ -16,7 +16,9 @@ Actions are pinned to commit SHAs. The release uses a GitHub-hosted Ubuntu
 runner, Node.js 24 and its npm CLI, the `npm` environment, and job-scoped
 `id-token: write` permission. It uses npm trusted publishing through OIDC;
 there is no `NPM_TOKEN` secret or token fallback in the workflow. Release
-package-manager caching is disabled. Ordinary pushes, pull requests, builds and
+package-manager caching is disabled. The `npm` environment requires `kws` review
+and disables administrator bypass; the owner can explicitly approve their own
+release. Ordinary pushes, pull requests, builds and
 tests do not publish.
 
 ## One-time npm setup
@@ -44,8 +46,8 @@ Node.js 24 toolchain meets those requirements. The configured npm trust must
 match the repository, workflow and environment exactly; new npm configurations
 must complete their first publication within npm's validation window. See the
 [npm trusted-publishing documentation](https://docs.npmjs.com/trusted-publishers/)
-for current setup, validation windows and allowed actions. GitHub environment
-review rules can be configured deliberately by the repository owner.
+for current setup, validation windows and allowed actions. Changes to GitHub
+environment review rules are separate repository-owner decisions.
 
 ## Prepare a release
 
