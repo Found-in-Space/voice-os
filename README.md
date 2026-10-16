@@ -35,8 +35,13 @@ starting the example. It is never included in a browser bundle. Enabling voice
 uses your configured OpenAI account; building and testing the examples uses
 offline fixtures.
 
-This alpha is not yet on npm. To install it in another application, run
-`npm pack` in this checkout and install the generated archive. See
+Install the experimental alpha in another application:
+
+```sh
+npm install @found-in-space/voice-os@alpha
+```
+
+For a local build, run `npm pack` in this checkout and install the archive. See
 [installation and integration](docs/usage.md#install-the-alpha).
 
 The [usage guide](docs/usage.md) shows client/server setup, shared tools,
@@ -57,11 +62,11 @@ the npm artifact contains compiled ESM and declarations with explicit exports.
 CI additionally runs dependency audits on Node.js 22 and 24. See
 [testing and host acceptance](docs/testing.md) for the checks and their limits.
 
-This is an unpublished `0.1.0-alpha.0` package. Pas de Géant's walking and eclipse
+This is an experimental `0.1.0-alpha.0` package. Pas de Géant's walking and eclipse
 experiences consume a generated npm archive in that repository's `vendor/npm`.
-This keeps a standalone Geant checkout buildable before registry publication.
+This keeps a standalone Geant checkout buildable while the alpha is developed.
 Run `npm run voice:refresh` in Geant to rebuild and install the sibling VoiceOS
-source. After publication, consumers can use the exact registry version.
+source. Registry consumers should pin the exact package version.
 
 ## Documentation and contributions
 

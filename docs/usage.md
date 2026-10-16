@@ -7,7 +7,14 @@ different application commands.
 
 ## Install the alpha
 
-Until registry publication, build and pack the independent source repository:
+Install the current alpha from npm:
+
+```sh
+npm install @found-in-space/voice-os@alpha
+```
+
+For an exact dependency, use `@found-in-space/voice-os@0.1.0-alpha.0`. To build a
+local archive from the independent source repository:
 
 ```sh
 npm ci

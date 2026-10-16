@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0-alpha.0 — unreleased
+## 0.1.0-alpha.0 — 2026-10-16
 
 Initial extraction from Pas de Géant into an independently reusable package:
 
