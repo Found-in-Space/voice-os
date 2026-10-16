@@ -41,6 +41,21 @@ an initial authenticated publication to expose its settings, treat it as a
 deliberate maintainer bootstrap, then configure trusted publishing for later
 releases. Do not add long-lived write credentials to the workflow as a workaround.
 
+With npm 11.15 or later, a package owner can configure and inspect the same
+settings through the CLI after browser/2FA login:
+
+```sh
+npm trust github @found-in-space/voice-os \
+  --repository=Found-in-Space/voice-os --file=release.yml \
+  --environment=npm --allow-publish
+npm trust list @found-in-space/voice-os --json
+```
+
+The package and this trusted publisher were created on 16 October 2026. Read
+back the npm policy rather than treating successful repository creation as
+evidence of npm authorization. The initial alpha uses an owner-authorized
+bootstrap upload; subsequent versions use the tagged GitHub workflow.
+
 Trusted publishing requires npm 11.5.1+ and Node.js 22.14+. The release runner's
 Node.js 24 toolchain meets those requirements. The configured npm trust must
 match the repository, workflow and environment exactly; new npm configurations
@@ -49,10 +64,15 @@ must complete their first publication within npm's validation window. See the
 for current setup, validation windows and allowed actions. Changes to GitHub
 environment review rules are separate repository-owner decisions.
 
+The first successful publish through a new trusted publisher must happen within
+two days of its creation; otherwise recreate the expired configuration before
+releasing. A successful owner bootstrap is separate from that first CI publish.
+
 ## Prepare a release
 
 1. Complete the [manual host acceptance](testing.md#manual-host-acceptance)
-   relevant to the change; the first alpha still needs this acceptance.
+   relevant to the change. The initial alpha remains experimental while this
+   acceptance is outstanding.
 2. Update the version and lockfile using npm, for example
    `npm version 0.1.0-alpha.1 --no-git-tag-version`. Update `CHANGELOG.md` and
    installation/status documentation to describe the release accurately.
@@ -60,16 +80,23 @@ environment review rules are separate repository-owner decisions.
    and inspect `npm pack --dry-run` for the intended ESM, declarations, docs,
    examples and licence. Secrets, source internals and build scratch stay out.
 4. Commit and push the reviewed version to `main`. After CI passes, create and
-   push the matching tag. For the first alpha:
+   push the matching tag. After the owner bootstrap of `0.1.0-alpha.0`, the next
+   alpha uses:
 
    ```sh
-   git tag -a v0.1.0-alpha.0 -m "VoiceOS 0.1.0-alpha.0"
-   git push origin v0.1.0-alpha.0
+   git tag -a v0.1.0-alpha.1 -m "VoiceOS 0.1.0-alpha.1"
+   git push origin v0.1.0-alpha.1
    ```
 
 5. Confirm the Release workflow succeeds and npm shows the intended version,
    dist-tag and provenance. Add GitHub release notes from the changelog when
    useful, and update consumers to the exact published version.
+
+npm can accept an upload before the version becomes publicly available. Verify
+the exact version, dist-tag and archive integrity in the registry before
+announcing installation or moving a consumer dependency. Do not resubmit the
+same version merely because registry processing has not finished. If npm lists
+a staged package, inspect and approve it with the separate `npm stage` flow.
 
 Stable versions publish to `latest`. Prereleases publish to their first named
 label: `0.1.0-alpha.0` uses `alpha`, `0.2.0-dev.1` uses `dev`, and
